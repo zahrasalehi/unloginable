@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <title>Home Page</title>
+    {% endblock %}
+</head>
+<body>
+{% block sidebar %}
+    <!-- insert default navigation text for every page -->
+{% endblock %}
+{% block content %}
+    <!-- default content text (typically empty) -->
+    {% if user.is_authenticated %}
+        <p2> you made it " {{ user.username }} "!!!!!!</p2>
+        <p3>now try to log out! :)))</p3>
+    {% endif %}
+    <p1>try to login.. good luck!</p1>
+{% endblock %}
+</body>
+</html>
