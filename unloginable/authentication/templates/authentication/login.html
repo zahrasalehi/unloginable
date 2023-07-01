@@ -1,11 +1,76 @@
 {% extends "authentication/index.html" %}
+{% block title %}
+
+    <title>Login Page</title>
+    <style>
+        #back {
+            background-color: cadetblue;
+            background-size: 100%;
+
+            animation-name: mymove;
+
+        }
+
+        #rounders {
+            border-radius: 25px;
+        }
+
+        #findIt {
+            width: auto;
+            animation-name: mymove;
+        }
+
+        #reverseY {
+            transform: rotateY(1deg);
+        }
+
+        #forms {
+            left: auto;
+
+        }
+
+        @keyframes mymove {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 200px;
+            }
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
 
-    <h1>Login</h1>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <div id="back">
+        <div id="rounders" class="container-fluid bg-dark">
+            <div class="container-fluid p-5 my-5 bg-dark text-white rounded">
+                <form method="POST" action="" class="form-horizontal">
+                    <div id="forms" class="form-group has-success">
+                        <h1>Login</h1>
+                        {% csrf_token %}
+                        <label class="control-label col-sm-2" for="id1">Username</label>
+                        <div class="col-sm-6">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group has-success">
+                        <label class="control-label col-sm-2"
+                               for="id2">Password</label>
+                        <div id="reverseY" class="col-sm-6">
+                            {{ form.password }}
+
+                        </div>
+                    </div>
+                    <button id="findIt" type="button" class="btn btn-outline-success">Login</button>
+                </form>
+                <div class="container">
+
+                    <a href="{% url 'users:signup' %}">Not a member? Register</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
